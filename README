@@ -1,0 +1,11 @@
+== Welcome to RSS TO EMAIL
+
+This code is using rails 2.2.2, but may be useful to someone who is looking to hack around with rss.
+
+Basically you run the front end, login, add an rss link, specify any keywords or twitter details, and then make sure cron is running the script feed_daemon.rb in the scripts directory is running.
+
+What's super cool when this is running is that you will be able to get new keyword based craigslist postings sent to your email inbox, and then you can reply to that email, and directly reply to a posting without ever visiting craigslist. super handy if you are busy a lot like me :)
+
+
+
+

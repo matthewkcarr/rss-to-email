@@ -1,0 +1,18 @@
+<h1>Listing sites</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for site in @sites %>
+  <tr>
+    <td><%= site.name %></td>
+    <td><%= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'preferences', new_site_preference_path(site) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New site', new_site_path %>

@@ -1,0 +1,12 @@
+<h1>Editing twitter_config</h1>
+
+<% form_for(@twitter_config) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @twitter_config %> |
+<%= link_to 'Back', twitter_configs_path %>

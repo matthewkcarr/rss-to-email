@@ -1,0 +1,45 @@
+<h1>New preference</h1>
+
+<% form_for :preference, @preference, :url => { :action => 'create' } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    Enter keywords that should be required in the post before being sent to your email. (seperated by spaces or commas)<br/><%= f.text_field :keywords, :size => 120 %>
+  </p>
+
+  <p>
+    Enter the maximum number of emails you would like to receive in a day.
+    <br/>
+    <%= f.text_field :throttle %>
+  </p>
+  <% if current_user.twitter_config and current_user.twitter_config.twitter_authorized? %>
+  <p>
+    Would you like to skip sending this to your inbox - and instead send directly to twitter?
+    <% checked1 = @preference.twitter_only == true ? 'checked="checked"' : "" %>
+    <input class="checkbox" name="preference[twitter_only]" <%= checked1 %> id="preference_twitter_only" type="checkbox"/>
+  </p>
+  <p>
+    This option will send email updates to yourself on twitter (e.g. a message ONLY to yourself and your phone)?
+    <% checked2 = @preference.twitter_self == true ? 'checked="checked"' : "" %>
+    <input class="checkbox" name="preference[twitter_self]" <%= checked2 %> id="preference_twitter_self" type="checkbox"/>
+  </p>
+  <p>
+    This option will send email updates to to your twitter account, and allow all of your friends to see these updates as well.
+    <% checked = @preference.twitter_all == true ? 'checked="checked"' : "" %>
+    <input class="checkbox" name="preference[twitter_all]" <%= checked %> id="preference_twitter_all" type="checkbox"/>
+  </p>
+  <% else %>
+    <p>
+      <%= link_to 'add your twitter details to send updates to your mobile phone!', new_twitter_config_path %>
+    </p>
+  <% end %>
+
+    <%= f.hidden_field :site_id, :value => @site.id %>
+
+
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', new_site_preference_path(@site) %>

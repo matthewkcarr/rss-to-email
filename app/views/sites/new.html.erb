@@ -1,0 +1,13 @@
+<h1>New site</h1>
+
+<% form_for(@site) do |f| %>
+  <%= f.error_messages %>
+  <p><br/>
+  URL: <%= f.text_field :name, :size => '80' %></p>
+
+  <p>
+    <%= f.submit "Add" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', sites_path %>
